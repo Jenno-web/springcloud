@@ -12,8 +12,12 @@ spring:
           uri: lb://userservice
           predicates:
             - Path=/user/**
+          filters:
+            - AddResponseHeader=Tru,666
         - id: order-service
           uri: lb://orderservice
           predicates:
             - Path=/order/**
             - Before=2031-04-13T15:14:47.433+08:00[Asia/Shanghai]
+      default-filters:
+        - AddResponseHeader=T,999
